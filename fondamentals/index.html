@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
     <form id="calForm" action="" method="">
       <label for="number1">Number A</label>
       <input id="number1" type="number" name="number1" placeholder="enter a number" /> <br>
       <label for="number2">Number B</label>
       <input id="number2" type="number" name="number2" placeholder="enter a number" />
       <br />
-      OPERATORS :
+      <h1>OPERATORS :</h1>
       
       <input type="radio" id="mul" name="operation" value="*">multiplication</input>
       <input type="radio" id="add" name="operation" value="+">addition</input>
@@ -25,6 +24,20 @@
      
     </form>
     <p>RESULT : <span id="result"></span></p>
+
+    <br>
+    <br>
+    <h1>Test the parity of a number</h1>
+    <p>test if a number is Even or Odd </p><br><br>
+
+    <form id="modulo" action="">
+    <label for="num">Number</label>
+
+        <input type="number" name="number" id="num" placeholder="enter a number to test"/>
+        <button type="submit">sent</button>
+    </form>
+    <br>
+    <p>the number is <span id="parity"></span></p>
 
     <script src="script.js"></script>
   </body>
