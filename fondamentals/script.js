@@ -62,8 +62,8 @@ window.addEventListener("load", function () {
 
   const parity = document.getElementById("modulo");
 
-  parity.addEventListener("submit", function (e) {
-    e.preventDefault;
+  parity.addEventListener("submit", function (event) {
+    event.preventDefault();
 
     const number = Number(document.getElementById("num").value);
 
