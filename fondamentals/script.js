@@ -28,37 +28,37 @@ write a script that will present yourself in the console. You can use console.lo
 //   EX 2 simple calculator
 
 window.addEventListener("load", function () {
-//   const form = document.getElementById("calForm");
+  //   const form = document.getElementById("calForm");
 
-//   form.addEventListener("submit", function (event) {
-//     event.preventDefault();
+  //   form.addEventListener("submit", function (event) {
+  //     event.preventDefault();
 
-//     const n1 = Number(document.getElementById("number1").value);
-//     const n2 = Number(document.getElementById("number2").value);
-//     const operator = document.querySelector(
-//       'input[name="operation"]:checked',
-//     ).value;
+  //     const n1 = Number(document.getElementById("number1").value);
+  //     const n2 = Number(document.getElementById("number2").value);
+  //     const operator = document.querySelector(
+  //       'input[name="operation"]:checked',
+  //     ).value;
 
-//     // let result;
+  //     // let result;
 
-//     if (operator === "*") {
-//       result = n1 * n2;
-//     } else if (operator === "-") {
-//       result = n1 - n2;
-//     } else if (operator === "+") {
-//       result = n1 + n2;
-//     } else if (operator === "/") {
-//       result = n2 !== 0 ? n1 / n2 : "error division is impossible";
-//     } else if (operator === "%") {
-//       result = n2 !== 0 ? n1 % n2 : "error modulo is impossible";
-//     } else {
-//       result = "unknown operator !";
-//     }
-//     document.getElementById("result").textContent = result;
-//     // console.log(n1);
-//     // console.log(n2);
-//     // console.log(result);
-//   });
+  //     if (operator === "*") {
+  //       result = n1 * n2;
+  //     } else if (operator === "-") {
+  //       result = n1 - n2;
+  //     } else if (operator === "+") {
+  //       result = n1 + n2;
+  //     } else if (operator === "/") {
+  //       result = n2 !== 0 ? n1 / n2 : "error division is impossible";
+  //     } else if (operator === "%") {
+  //       result = n2 !== 0 ? n1 % n2 : "error modulo is impossible";
+  //     } else {
+  //       result = "unknown operator !";
+  //     }
+  //     document.getElementById("result").textContent = result;
+  //     // console.log(n1);
+  //     // console.log(n2);
+  //     // console.log(result);
+  //   });
 
   const parity = document.getElementById("modulo");
 
@@ -68,6 +68,7 @@ window.addEventListener("load", function () {
     const number = Number(document.getElementById("num").value);
 
     let result;
+    let zero;
 
     if (number % 2 == 0) {
       result = "Even";
@@ -75,8 +76,20 @@ window.addEventListener("load", function () {
       result = "Odd";
     }
 
-    document.getElementById("parity").textContent=result
+    if (number > 0) {
+      zero = `${number} is a positive number`;
+      console.log(`${number} is a positive number`);
+    } else if (number < 0) {
+      zero = `${number} is a negaive number`;
+      console.log(`${number} is a negaive number`);
+    } else {
+      zero = "the number is zero";
+      console.log(" the number is zero");
+    }
+
+    document.getElementById("parity").textContent = result;
+    document.getElementById("zero").textContent = zero;
+
     console.log(result);
-    
   });
 });
