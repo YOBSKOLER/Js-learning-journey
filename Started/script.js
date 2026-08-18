@@ -1,4 +1,8 @@
 window.addEventListener("load", function () {
+  /*
+  ex 1
+  write a programme that will show the level of appreciation of a student accordin to his mark
+  */
   const table = document.getElementById("marks");
 
   table.addEventListener("submit", function (event) {
@@ -30,4 +34,12 @@ window.addEventListener("load", function () {
         appr;
     });
   });
+
+  for (let num = 0; num <= 100; num++) {
+    if (num % 2 == 0 && num % 5 == 0) {
+      console.log(num);
+    }
+
+    document.getElementById("inc").textContent += num + '<br>'
+  }
 });
