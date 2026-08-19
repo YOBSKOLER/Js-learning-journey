@@ -104,4 +104,35 @@ Concepts:
     }
     document.getElementById("result").innerHTML = result;
   });
+
+  /*
+Exercise 8  FizzBuzz
+For numbers from 1 to 100:
+- Multiple of 3  Fizz
+- Multiple of 5  Buzz
+- Multiple of both FizzBuzz
+- Otherwise → number
+
+ Important
+This exercise looks simple but tests:
+- conditions
+- order of conditions
+- % operator
+- logic
+*/
+let mul ="";
+for (let i = 0; i <= 100; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    mul += "FizzBuzz<br>";
+  } else if (i % 3 === 0) {
+    mul += "Fizz<br>";
+  } else if (i % 5 === 0) {
+    mul += "Buzz<br>";
+  } else {
+    mul += `${i}<br>`;
+  }
+}
+document.getElementById("mul").innerHTML = mul;
+
+
 });
