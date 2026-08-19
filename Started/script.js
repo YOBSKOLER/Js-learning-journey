@@ -35,23 +35,73 @@ window.addEventListener("load", function () {
     });
   });
 
+  /*
+  ex 2
+  write a programme that will show the even numbers between 1 and 100 that are divisible by 5
+  
+  */
+
   const zone = document.getElementById("inc");
 
-  zone.textContent = "";
+  zone.innerHTML = "";
 
   for (let num = 1; num <= 100; num++) {
     if (num % 2 == 0 && num % 5 == 0) {
-      console.log(num);
-      zone.textContent += num + "-";
+      // console.log(num);
+      zone.innerHTML += num + "<br>";
     }
   }
 
   for (let num = 100; num >= 1; num--) {
     if (num % 2 == 0 && num % 5 == 0) {
-      console.log(num);
-      zone.textContent += num + "-";
+      // console.log(num);
+      zone.innerHTML += num + "-";
     }
 
     // document.getElementById("inc").textContent += num + '<br>'
   }
+
+  /*
+
+for loop is best when the number of iterations is known (like counting or iterating through arrays).
+
+while loop  best when the number of iterations is unknown and depends on a condition 
+(like waiting for user input, or looping until a certain state is reached).
+
+*/
+  let i = 100;
+  while (i >= 1) {
+    if (i % 5 === 0 && i % 2 === 0) {
+      console.log(i);
+    }
+    i--;
+  }
+
+  /*
+Exercise 7 — Multiplication Table
+
+The user chooses a number.
+
+Example:
+5 × 1 = 5
+5 × 2 = 10
+and so on...
+Concepts:
+- loop
+- variables
+- calculation
+- template literals
+*/
+
+  const form = document.getElementById("times");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const number = Number(document.getElementById("number").value);
+    let result = "";
+
+    for (let i = 0; i <= 10; i++) {
+      result += `${number} × ${i} = ${number * i}<br>`;
+    }
+    document.getElementById("result").innerHTML = result;
+  });
 });
