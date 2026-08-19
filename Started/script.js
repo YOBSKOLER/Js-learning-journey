@@ -35,11 +35,23 @@ window.addEventListener("load", function () {
     });
   });
 
-  for (let num = 0; num <= 100; num++) {
+  const zone = document.getElementById("inc");
+
+  zone.textContent = "";
+
+  for (let num = 1; num <= 100; num++) {
     if (num % 2 == 0 && num % 5 == 0) {
       console.log(num);
+      zone.textContent += num + "-";
+    }
+  }
+
+  for (let num = 100; num >= 1; num--) {
+    if (num % 2 == 0 && num % 5 == 0) {
+      console.log(num);
+      zone.textContent += num + "-";
     }
 
-    document.getElementById("inc").textContent += num + '<br>'
+    // document.getElementById("inc").textContent += num + '<br>'
   }
 });
