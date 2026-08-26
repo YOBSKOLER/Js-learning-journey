@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculatrice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-zinc-900 min-h-screen flex items-center justify-center p-4">
+    <div
+      class="w-full max-w-[320px] bg-zinc-950 rounded-[32px] p-5 shadow-2xl border border-zinc-800"
+    >
+      <!-- Ecran -->
+      <div class="h-28 flex flex-col justify-end items-end p-4 mb-2">
+        <div id="history" class="text-zinc-500 text-lg h-6 truncate"></div>
+        <div
+          id="display"
+          class="text-white text-5xl font-light tracking-tight truncate"
+        >
+          0
+        </div>
+      </div>
+
+      <!-- Clavier -->
+      <div class="grid grid-cols-4 gap-3">
+        <button
+          data-action="clear"
+          class="h-16 rounded-full bg-zinc-800 text-white text-xl active:bg-zinc-700"
+        >
+          AC
+        </button>
+        <button
+          data-action="plusminus"
+          class="h-16 rounded-full bg-zinc-800 text-white text-xl active:bg-zinc-700"
+        >
+          +/-
+        </button>
+        <button
+          data-action="percent"
+          class="h-16 rounded-full bg-zinc-800 text-white text-xl active:bg-zinc-700"
+        >
+          %
+        </button>
+        <button
+          data-operator="÷"
+          class="h-16 rounded-full bg-orange-500 text-white text-2xl active:bg-orange-400"
+        >
+          ÷
+        </button>
+
+        <button
+          data-number="7"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          7
+        </button>
+        <button
+          data-number="8"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          8
+        </button>
+        <button
+          data-number="9"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          9
+        </button>
+        <button
+          data-operator="×"
+          class="h-16 rounded-full bg-orange-500 text-white text-2xl active:bg-orange-400"
+        >
+          ×
+        </button>
+
+        <button
+          data-number="4"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          4
+        </button>
+        <button
+          data-number="5"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          5
+        </button>
+        <button
+          data-number="6"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          6
+        </button>
+        <button
+          data-operator="-"
+          class="h-16 rounded-full bg-orange-500 text-white text-2xl active:bg-orange-400"
+        >
+          −
+        </button>
+
+        <button
+          data-number="1"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          1
+        </button>
+        <button
+          data-number="2"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          2
+        </button>
+        <button
+          data-number="3"
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          3
+        </button>
+        <button
+          data-operator="+"
+          class="h-16 rounded-full bg-orange-500 text-white text-2xl active:bg-orange-400"
+        >
+          +
+        </button>
+
+        <button
+          data-number="0"
+          class=" h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700 text-left pl-7"
+        >
+          0
+        </button>
+        <button
+          data-number="."
+          class="h-16 rounded-full bg-zinc-800/60 text-white text-xl active:bg-zinc-700"
+        >
+          ,
+        </button>
+        <button
+          data-action="equals"
+          class="col-span-2 h-16 rounded-full bg-white text-black text-2xl active:bg-zinc-200"
+        >
+          =
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const display = document.getElementById("display");
+      const historyEl = document.getElementById("history");
+      let current = "0";
+      let previous = "";
+      let operator = null;
+      let resetNext = false;
+
+      function update() {
+        display.textContent = current;
+        historyEl.textContent = previous + (operator ? ` ${operator}` : "");
+      }
+
+      function inputNumber(num) {
+        if (resetNext) {
+          current = num === "." ? "0." : num;
+          resetNext = false;
+        } else {
+          if (num === "." && current.includes(".")) return;
+          current = current === "0" && num !== "." ? num : current + num;
+        }
+        update();
+      }
+
+      function inputOperator(op) {
+        if (previous !== "" && operator && !resetNext) calculate();
+        previous = current;
+        operator = op;
+        resetNext = true;
+        update();
+      }
+
+      function calculate() {
+        const a = parseFloat(previous);
+        const b = parseFloat(current);
+        if (isNaN(a) || isNaN(b)) return;
+        let result = 0;
+        switch (operator) {
+          case "+":
+            result = a + b;
+            break;
+          case "-":
+            result = a - b;
+            break;
+          case "×":
+            result = a * b;
+            break;
+          case "÷":
+            result = b === 0 ? "Erreur" : a / b;
+            break;
+        }
+        current =
+          typeof result === "string"
+            ? result
+            : parseFloat(result.toFixed(10)).toString();
+        previous = "";
+        operator = null;
+        resetNext = true;
+        update();
+      }
+
+      document
+        .querySelectorAll("[data-number]")
+        .forEach((b) =>
+          b.addEventListener("click", () => inputNumber(b.dataset.number)),
+        );
+      document
+        .querySelectorAll("[data-operator]")
+        .forEach((b) =>
+          b.addEventListener("click", () => inputOperator(b.dataset.operator)),
+        );
+
+      document
+        .querySelector('[data-action="equals"]')
+        .addEventListener("click", calculate);
+      document
+        .querySelector('[data-action="clear"]')
+        .addEventListener("click", () => {
+          current = "0";
+          previous = "";
+          operator = null;
+          update();
+        });
+      document
+        .querySelector('[data-action="plusminus"]')
+        .addEventListener("click", () => {
+          if (current !== "0") current = (parseFloat(current) * -1).toString();
+          update();
+        });
+      document
+        .querySelector('[data-action="percent"]')
+        .addEventListener("click", () => {
+          current = (parseFloat(current) / 100).toString();
+          update();
+        });
+
+      // Clavier PC
+      document.addEventListener("keydown", (e) => {
+        if (/[0-9]/.test(e.key)) inputNumber(e.key);
+        if (e.key === ".") inputNumber(".");
+        if (["+", "-", "*", "/"].includes(e.key))
+          inputOperator({ "+": "+", "-": "-", "*": "×", "/": "÷" }[e.key]);
+        if (e.key === "Enter" || e.key === "=") calculate();
+        if (e.key === "Backspace") {
+          current = current.length > 1 ? current.slice(0, -1) : "0";
+          update();
+        }
+      });
+      update();
+    </script>
+  </body>
+</html>

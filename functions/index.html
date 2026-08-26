@@ -4,13 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-
-    <script src="style.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
   </head>
-  <body>
-    <div class="container">
-      <div class="display">0</div>
-      <div class="buttons">
+  <body class="bg-zinc-900 min-h-screen flex items-center justify-center p-4">
+   <div
+      class="w-full max-w-[320px] bg-zinc-950 rounded-[32px] p-5 shadow-2xl border border-zinc-800"
+    >
+      <!-- Ecran -->
+      <div class="h-28 flex flex-col justify-end items-end p-4 mb-2">
+        <div id="history" class="text-zinc-500 text-lg h-6 truncate"></div>
+        <div
+          id="display"
+          class="text-white text-5xl font-light tracking-tight truncate"
+        >
+          0
+        </div>
+      </div>
+
+      <div class="buttons bg-neutral-900  grid grid-cols-4 gap-2">
+        <button data-action="clear" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">AC</button>
+        <button data-action="percent" class="btn size-15 text-white rounded-full  bg-neutral-500  active:bg-neutral-700">%</button>
+        <button data-action="clear" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">sup</button>
+        <button data-operator="/" class="btn size-15 text-white rounded-full bg-neutral-500 active:bg-neutral-700">/</button>
+        <button data-number="7" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">7</button>
+        <button data-number="8" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">8</button>
+        <button data-number="9" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">9</button>
+        <button data-operator="*" class="btn size-15 text-white rounded-full bg-neutral-500 active:bg-neutral-700">*</button>
+        <button data-number="4" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">4</button>
+        <button data-number="5" class="btn size-15 text-white rounded-full bg-neutral-500 active:bg-neutral-700">5</button>
+        <button data-number="6" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">6</button>
+        <button data-operator="-" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">-</button>
+        <button data-number="1" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">1</button>
+        <button data-number="2" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">2</button>
+        <button data-number="3" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">3</button>
+        <button data-operator="+" class="btn size-15 text-white rounded-full bg-neutral-500 active:bg-neutral-700">+</button>
+        <button data-number="." class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">.</button>
+        <button data-number="0" class="btn size-15 text-white rounded-full bg-neutral-500  active:bg-neutral-700">0</button>
+        <button data-action="equals" class="btn col-span-2 text-white rounded-full bg-sky-400  active:bg-sky-600">=</button>
       </div>
     </div>
 

@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(240, 255, 255, 0.633);
+  color: #333;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.display {
+  display: flex;
+  position: absolute;
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+.btn{
+    cursor: pointer;
+    color: azure;
+    border: none;
+}
