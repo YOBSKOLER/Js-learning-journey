@@ -20,7 +20,6 @@ parameter
 argument
 return
     */
-
 const display = document.getElementById("display");
 const historyEl = document.getElementById("history");
 let current = "0";
@@ -64,14 +63,12 @@ function calculate() {
     case "-":
       result = a - b;
       break;
-    case "*":
+    case "×":
       result = a * b;
       break;
-    case "/":
+    case "÷":
       result = b === 0 ? "Erreur" : a / b;
       break;
-    case "%":
-      result = a / 100;
   }
   current =
     typeof result === "string"
@@ -122,8 +119,8 @@ document
 document.addEventListener("keydown", (e) => {
   if (/[0-9]/.test(e.key)) inputNumber(e.key);
   if (e.key === ".") inputNumber(".");
-  if (["+", "-", "*", "/","%"].includes(e.key))
-    inputOperator({ "+": "+", "-": "-", "*": "×", "/": "÷","%":"%" }[e.key]);
+  if (["+", "-", "*", "/"].includes(e.key))
+    inputOperator({ "+": "+", "-": "-", "*": "×", "/": "÷" }[e.key]);
   if (e.key === "Enter" || e.key === "=") calculate();
   if (e.key === "Backspace") {
     current = current.length > 1 ? current.slice(0, -1) : "0";
@@ -131,4 +128,5 @@ document.addEventListener("keydown", (e) => {
   }
 });
 update();
+
 // });
